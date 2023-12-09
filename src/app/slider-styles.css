@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.swiper-button-next {
+    @apply text-ternary !important;
+    top: auto !important;
+    bottom: 12px !important;
+    left: var(--swiper-navigation-sides-offset, 50px) !important;
+  }
+  .swiper-button-prev {
+    @apply text-ternary !important;
+    top: auto !important;
+    bottom: 12px !important;
+    right: auto  !important;
+    left: var(--swiper-navigation-sides-offset, 10px) !important;
+  }
+  
+  /* @media screen and (max-width: 500px) {
+    .swiper-button-next {
+        bottom: 12px !important;
+    }
+    .swiper-button-prev {
+        bottom: 12px !important;
+        right : auto  !important;
+        left: var(--swiper-navigation-sides-offset, 30px) !important;
+    }
+    
+  } */
+  
+  .swiper-button-next::after {
+    @apply text-xl lg:text-4xl !important;
+  }
+  .swiper-button-prev::after {
+    @apply text-xl lg:text-4xl !important;
+  }
+  
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .swiper-slide {
+    font-size: 18px;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0px;
+  }
