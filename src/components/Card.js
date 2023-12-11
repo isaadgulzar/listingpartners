@@ -25,8 +25,8 @@ const Card = ({ review }) => {
 			<div className="flex flex-col gap-4">
 				<div className="px-4 pt-4">
 					<h2 className="flex justify-between">
-						<p className="paragraph font-bold">{review.name}</p>
-						<span className="flex gap-1">
+						<p className="paragraph font-bold max-w-max">{review.name}</p>
+						<span className="w-40 flex gap-1 flex-shrink-0">
 							{Array.from({ length: 5 }, (_, i) => (
 								<Image
 									key={i}
@@ -50,7 +50,7 @@ const Card = ({ review }) => {
 						"We couldn't have been more delighted with the Listing Partners! Their method of handpicking premier agents and creating unique terms and conditions resulted in a flawlessly smooth selling experience."
 					}
 				</p>
-				<p className="h-16 w-full bg-primary absolute z-10 left-0 bottom-0"></p>
+				<p className="h-16 w-full bg-secondary lg:bg-primary absolute z-10 left-0 bottom-0"></p>
 			</div>
 		</div>
 	)

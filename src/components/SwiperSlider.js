@@ -6,13 +6,7 @@ import 'swiper/css/navigation'
 
 import '../app/slider-styles.css'
 
-const SwiperSlider = ({
-	slidesPerView,
-	spaceBetween,
-	slidesData,
-	autoPlay,
-	children,
-}) => {
+const SwiperSlider = ({ slidesPerView, spaceBetween, autoPlay, children }) => {
 	return (
 		<Swiper
 			speed={700}

@@ -10,13 +10,9 @@ import Logo from '../assets/Logo.svg'
 import VideoThumbnail from '../assets/images/videoImage.svg'
 import StepOneImage from '../assets/images/StepOneImage.svg'
 import Form from '../assets/images/Form.svg'
-import StepTwoUpper from '../assets/images/StepTwoUpper.svg'
-import StepTwoMiddle from '../assets/images/StepTwoMiddle.svg'
-import StepTwoLower from '../assets/images/StepTwoLower.svg'
-import StepTwoCard from '../assets/images/StepTwoCard.svg'
+import StepTwoPerson from '../assets/images/StepTwoPerson.svg'
 import StepThreeLeft from '../assets/images/StepThreeLeft.svg'
 import StepThreeRight from '../assets/images/StepThreeRight.svg'
-import StepThreeCard from '../assets/images/StepThreeCard.svg'
 import StepFourImage from '../assets/images/StepFourImage.svg'
 import StepFourCard from '../assets/images/StepFourCard.svg'
 import FirstServiceImage from '../assets/images/FirstServiceImage.svg'
@@ -44,9 +40,6 @@ import Scan from '../assets/icons/Scan.svg'
 import StepTwoIcon from '../assets/icons/StepTwoIcon.svg'
 import StepThreeIcon from '../assets/icons/StepThreeIcon.svg'
 import StepFourIcon from '../assets/icons/StepFourIcon.svg'
-import FirstServiceIcon from '../assets/icons/FirstServiceIcon.svg'
-import SecondServiceIcon from '../assets/icons/SecondServiceIcon.svg'
-import Star from '../assets/icons/Star.svg'
 import Instagram from '../assets/icons/instagram.svg'
 import Linkedin from '../assets/icons/linkedin-in.svg'
 import TwitterX from '../assets/icons/x.svg'
@@ -55,10 +48,12 @@ import Cross from '../assets/icons/cross.svg'
 
 import SwiperSlider from '@/components/SwiperSlider'
 import Card from '@/components/Card'
+import ContactModal from '@/components/ContactModal'
 
 export default function Home() {
 	const [hideVideoThumbnail, setHideVideoThumbnail] = useState(false)
 	const [showNav, setShowNav] = useState(false)
+	const [showContactModal, setShowContactModal] = useState(false)
 
 	const reviews = [
 		{
@@ -105,59 +100,60 @@ export default function Home() {
 			location: 'Victoria',
 			desc: `Selling alongside the Listing Partners was a game-changer! 
 
-      Their personalized guidance accompanied us at every step. They adeptly negotiated fixed commissions and advertising budgets, allowing us to cover upfront costs using settlement fees. 
-      
-      Despite being a newly established startup, taking a chance on them proved incredible, given their focus on a limited clientele to provide exceptional service.`,
+			Their personalized guidance accompanied us at every step. They adeptly negotiated fixed commissions and advertising budgets, allowing us to cover upfront costs using settlement fees. 
+			
+			Despite being a newly established startup, taking a chance on them proved incredible, given their focus on a limited clientele to provide exceptional service.`,
 			image: CardImage5,
 		},
 	]
 
 	return (
-		<main className="w-full font-montserrat text-white ">
-			{/* Header Section Starts */}
-			<header className="relative px-6 md:px-36 h-[50px] lg:h-[84px] flex flex-col justify-center bg-primary">
+		<main
+			className={`w-full font-montserrat text-negative ${
+				showContactModal ? 'h-screen overflow-hidden' : ''
+			}`}
+		>
+			{/* Header Section */}
+			<header className="relative px-6 md:px-10 h-[50px] lg:h-[84px] flex flex-col justify-center bg-primary">
 				<nav className="flex justify-between items-center max-w-screen-2xl mx-auto w-full">
-					<Link href="#" className="w-28 h-4 md:h-7 md:w-52">
-						<Image src={Logo} alt="Logo" className="w-full h-full" priority />
-					</Link>
+					<div className="flex items-center justify-between max-w-3xl w-full">
+						<Link href="#" className="w-28 h-4 md:h-7 md:w-52">
+							<Image src={Logo} alt="Logo" className="w-full h-full" />
+						</Link>
 
-					<ul
-						className={`${
-							showNav ? 'hidden' : 'hidden md:flex'
-						} flex justify-center items-center gap-2 md:gap-4 lg:gap-6 relative`}
-					>
-						<li>
-							<Link href="#" className="nav-item">
-								Home
-							</Link>
-						</li>
-						<li>
-							<Link href="#" className="nav-item">
-								About
-							</Link>
-						</li>
-						<li>
-							<Link href="#" className="nav-item">
-								Contact
-							</Link>
-						</li>
-					</ul>
-
+						<ul
+							className={`${
+								showNav ? 'hidden' : 'hidden md:flex'
+							} flex justify-center items-center gap-2 md:gap-12 relative`}
+						>
+							<li>
+								<Link href="#" className="link active">
+									Home
+								</Link>
+							</li>
+							<li>
+								<Link href="#about" className="link">
+									About
+								</Link>
+							</li>
+							<li>
+								<Link href="#contact" className="link">
+									Contact
+								</Link>
+							</li>
+						</ul>
+					</div>
 					<button onClick={() => setShowNav(!showNav)} className="md:hidden">
 						{showNav ? (
-							<Image
-								src={Cross}
-								alt="Cross"
-								className="h-10 text-negative"
-								priority
-							/>
+							<Image src={Cross} alt="Cross" className="h-10" />
 						) : (
-							<Image src={OpenMenu} alt="Union" className="h-10" priority />
+							<Image src={OpenMenu} alt="Union" className="h-10" />
 						)}
 					</button>
 
-					<button className="btn-ternary hidden md:flex">
-						Get Started <Image src={ArrowRight} className="h-3.5 w-3" />
+					<button className="btn-solid hidden md:flex">
+						Get Started{' '}
+						<Image src={ArrowRight} alt="ArrowRight" className="h-3 w-3.5" />
 					</button>
 				</nav>
 				<nav className={`${showNav ? 'flex w-full' : 'hidden'}`}>
@@ -168,134 +164,129 @@ export default function Home() {
 							</Link>
 						</li>
 						<li>
-							<Link href="#" className="nav-item">
+							<Link href="#about" className="nav-item">
 								About
 							</Link>
 						</li>
 						<li>
-							<Link href="#" className="nav-item">
+							<Link href="#contact" className="nav-item">
 								Contact
 							</Link>
 						</li>
 					</ul>
 				</nav>
 			</header>
-			{/* Header Section Ends */}
 
-			{/* Hero Section Starts here */}
-			<div className="relative h-screen py-10 bg-primary">
+			{/* Hero Section */}
+			<div className="relative bg-primary">
 				<Image
 					src={Intersect}
 					alt="Intersect"
-					className="w-full h-full object-cover absolute top-0 left-0 z-10"
-					priority
+					className="w-full h-screen object-cover absolute top-0 left-0"
 				/>
-				<section className="hero-section max-w-screen-2xl mx-auto w-full">
-					{/* Left Side */}
-					<aside className="flex flex-col gap-6 md:gap-8 relative z-20">
-						<div>
-							<h1 className="main-heading mb-4 md:w-[420px]">
-								Let’s find your perfect match
-								<span className="full-stop inline">.</span>
-							</h1>
-							<p className="paragraph w-[77%]">
-								Sell your home with confidence – choose ListingPartners, your
-								go-to platform for connecting with the perfect real estate agent
-								in Australia.
-							</p>
-						</div>
-
-						<div>
-							<button className="btn-primary">
-								Get Started <Image src={ArrowRight} className="h-3.5 w-3" />
-							</button>
-						</div>
+				<section className="hero-section max-w-screen-2xl mx-auto w-full px-6 xl:px-10">
+					<aside className="relative pt-32 lg:pt-0">
+						<h1 className="text-4xl lg:text-7xl font-bold font-montserrat leading-[normal] tracking-[1.08px] mb-5 lg:mb-2.5 max-w-lg">
+							Let’s find your perfect match{' '}
+							<span className="text-ternary -ml-3 lg:-ml-6">.</span>
+						</h1>
+						<p className="paragraph max-w-sm pb-10">
+							Sell your home with confidence – choose ListingPartners, your
+							go-to platform for connecting with the perfect real estate agent
+							in Australia.
+						</p>
+						<button className="btn-primary">
+							Get Started{' '}
+							<Image src={ArrowRight} alt="ArrowRight" className="h-3 w-3.5" />
+						</button>
 					</aside>
-					{/* Left Side */}
-
-					{/* Right Side Starts here */}
-					<aside className="relative z-20 w-full h-[300px] md:h-[320px] md:w-[440px]">
-						<div className="absolute -right-4 -bottom-4 h-[70%] w-[70%] bg-ternary"></div>
-
+					<aside className="relative w-full h-[300px] md:h-[400px] md:w-[550px]">
+						<div className="absolute -right-7 -bottom-7 md:h-[300px] md:w-[380px] bg-ternary"></div>
 						<iframe
 							className="h-full w-full relative"
 							src="https://www.youtube-nocookie.com/embed/_27uAZAVGtA?si=VLahgbTa476cL30o"
 							title="YouTube video player"
-							frameborder="0"
 							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-							allowfullscreen
 						></iframe>
-
 						{!hideVideoThumbnail && (
 							<div className="w-full h-full absolute top-0 left-0">
 								<Image
 									src={VideoThumbnail}
 									alt="Video Thumbnail"
 									className="w-full h-full object-cover"
+									width={'auto'}
+									height={'auto'}
+									priority
 								/>
 								<Image
 									src={PlayIcon}
 									alt="Video Thumbnail"
-									className="w-20 h-20 absolute top-[40%] left-[40%] cursor-pointer hover:shadow-xl hover:shadow-white rounded-full"
+									className="w-20 h-20 absolute top-[40%] left-[45%] cursor-pointer hover:shadow-md hover:shadow-negative/50 rounded-full"
 									onClick={() => setHideVideoThumbnail(true)}
+									width={'auto'}
+									height={'auto'}
+									priority
 								/>
 							</div>
 						)}
 					</aside>
-					{/* Right Side Starts here */}
 				</section>
 			</div>
-			{/* Hero Section Ends here */}
-			<div className="relative bg-secondary pt-10 ">
-				{/* Partners Section Starts here */}
-				<section className="partners-section max-w-screen-2xl mx-auto w-full">
-					<div className="flex flex-col gap-2 md:gap-4 lg:gap-6 text-center max-w-[550px]">
+
+			{/* Partners Section */}
+			<div className="relative bg-secondary">
+				<section className="bg-secondary main-container max-w-screen-2xl mx-auto w-full">
+					<div className="section-header">
 						<h2 className="section-heading">Trusted by</h2>
-						<p className="paragraph">
+						<p className="section-desc">
 							Sell your home with confidence – choose ListingPartners, your
 							go-to platform for connecting with the perfect.
 						</p>
 					</div>
-
-					<div className="flex justify-center items-center gap-4 md:gap-6 lg:gap-14 pb-10">
+					<div className="flex flex-col lg:flex-row justify-center items-center gap-7 lg:gap-14">
 						<div className="partner-item">
 							<Image
 								src={Century21}
 								alt="Century21"
-								className="partner-image"
-								priority
+								className="h-6 lg:h-12 w-[236px]"
+								width={'auto'}
+								height={'auto'}
 							/>
 						</div>
 						<div className="partner-item">
 							<Image
 								src={Hooker}
 								alt="Hooker"
-								className="partner-image"
-								priority
+								className="h-6 lg:h-12 w-[191px]"
+								width={'auto'}
+								height={'auto'}
 							/>
 						</div>
 						<div className="partner-item">
 							<Image
 								src={McGrath}
 								alt="McGrath"
-								className="partner-image"
-								priority
+								className="h-6 lg:h-12 w-[166px]"
+								width={'auto'}
+								height={'auto'}
 							/>
 						</div>
 						<div className="partner-item">
 							<Image
 								src={Elders}
-								alt="Century21"
-								className="partner-image"
-								priority
+								alt="Elders"
+								className="h-6 lg:h-12 w-[123px]"
+								width={'auto'}
+								height={'auto'}
 							/>
 						</div>
 						<div className="partner-item">
 							<Image
 								src={Remax}
 								alt="Remax"
-								className="partner-image"
-								priority
+								className="h-6 lg:h-12 w-[172px]"
+								width={'auto'}
+								height={'auto'}
 							/>
 						</div>
 					</div>
@@ -303,362 +294,311 @@ export default function Home() {
 				<Image
 					src={Pattern}
 					alt="Pattern"
-					className="absolute w-full bottom-0 z-10"
-					priority
+					className="w-full mt-20"
+					width={'auto'}
+					height={'auto'}
 				/>
 			</div>
-			{/* Partners Section Ends here */}
 
-			{/* How-it-works Section Starts here */}
-			<div className="relative z-0 bg-primary overflow-hidden">
+			{/* How-it-works Section */}
+			<div id="about" className="relative bg-primary overflow-hidden">
 				<Image
 					src={Union}
 					alt="Union"
-					className="w-full h-[2200px] absolute -top-20 -right-40 -z-[1]"
-					priority
+					className="w-full h-[1935px] absolute top-10 -right-56 z-10"
+					width={'auto'}
+					height={'auto'}
 				/>
-				<section className="how-it-works-section max-w-screen-2xl mx-auto w-full">
-					{/* Heading /  Header*/}
-					<div className="flex flex-col gap-2 md:gap-4 lg:gap-6 text-center max-w-[550px]">
-						<h2 className="section-heading">How does it work?</h2>
-						<p className="paragraph">
-							Sell your home with confidence – choose ListingPartners, your
-							go-to platform for connecting with the perfect.
-						</p>
-					</div>
-
-					{/* What-to-do Step-----1 Starts here */}
-					<section className="two-column-layout py-16">
-						{/* Left-Side Starts here */}
-						<aside className="h-full w-full flex items-center">
-							<div className="description-box">
-								<p className="step-title">
+				<div className="max-w-screen-2xl mx-auto bg-primary">
+					<section className="main-container items-center max-w-5xl mx-auto gap-[60px] lg:gap-[140px] pb-[60px] lg:pb-[180px] relative">
+						<div className="section-header">
+							<h2 className="section-heading">How does it work?</h2>
+							<p className="section-desc">
+								Sell your home with confidence – choose ListingPartners, your
+								go-to platform for connecting with the perfect.
+							</p>
+						</div>
+						{/*Step 1 */}
+						<section className="two-column-layout relative z-20">
+							<aside className="h-full w-full flex items-center">
+								<div className="description-box">
+									<p className="step-title">
+										<Image
+											src={Line}
+											alt="Line"
+											className="w-6 h-[2px]"
+											width={'auto'}
+											height={'auto'}
+										/>
+										Step one
+									</p>
+									<h2 className="section-heading">Assessment</h2>
+									<p className="paragraph">
+										Sellers complete a comprehensive form outlining their
+										property details, needs, and sales strategy preferences.
+									</p>
+									<p className="paragraph">
+										We analyze this information to understand their specific
+										requirements.
+									</p>
+								</div>
+							</aside>
+							<aside className="h-full w-full flex justify-center relative">
+								<div className="relative">
 									<Image
-										src={Line}
-										alt="Line"
-										className="w-6 h-[2px]"
-										priority
+										src={StepOneImage}
+										alt="Property Image"
+										className="h-[300px]"
+										width={'auto'}
+										height={'auto'}
 									/>
-									Step one
-								</p>
-								<h2 className="section-heading">Assessment</h2>
-								<p className="paragraph">
-									Sellers complete a comprehensive form outlining their property
-									details, needs, and sales strategy preferences.
-								</p>
-								<p className="paragraph">
-									We analyze this information to understand their specific
-									requirements.
-								</p>
-							</div>
-						</aside>
-						{/* Left-Side Ends here */}
-
-						{/* Right-Side Starts here */}
-						<aside className="h-full w-full flex justify-center relative">
-							<div className="w-[60%] h-[70%] sm:w-[35%] sm:h-[45%] md:w-[90%] md:h-full lg:w-full relative">
-								<Image
-									src={StepOneImage}
-									alt="Property Image"
-									className="w-[75%] absolute right-0 top-0"
-									priority
-								/>
-
-								<Image
-									src={Scan}
-									alt="Scan"
-									className="icon-size absolute top-4 md:top-6 left-[17%] md:left-[18%]"
-									priority
-								/>
-
-								<Image
-									src={Form}
-									alt="Form Image"
-									className="w-[75%] absolute -bottom-32 left-0"
-									priority
-								/>
-							</div>
-						</aside>
-						{/* Right-Side Ends here */}
-					</section>
-					{/* What-to-do Step-----1 Ends here */}
-
-					{/* What-to-do Step-----2 Starts here */}
-					<section className="two-column-layout py-16">
-						{/* Left-Side Starts here */}
-						<aside className="h-full w-full relative">
-							<div className="h-full w-full md:h-[80%] flex items-end relative">
+									<Image
+										src={Scan}
+										alt="Scan"
+										className="icon-size absolute top-10 lg:top-8 -left-4 lg:-left-9"
+										width={'auto'}
+										height={'auto'}
+									/>
+									<Image
+										src={Form}
+										alt="Form Image"
+										className="absolute bottom-0 -left-4 lg:-left-24"
+										width={'auto'}
+										height={'auto'}
+									/>
+								</div>
+							</aside>
+						</section>
+						{/*Step 2 */}
+						<section className="two-column-layout relative z-20">
+							<aside className="relative mr-auto">
 								<Image
 									src={StepTwoIcon}
-									alt=""
-									className="icon-size absolute right-[30%] md:right-[10%] lg:right-1/4 top-10 z-0"
-									priority
-								/>
-
-								<Image
-									src={StepTwoLower}
-									alt=""
-									className="w-[44%] h-[80%] object-fill absolute left-8 bottom-8 z-0"
-									priority
+									alt="image"
+									className="icon-size absolute -right-28 -top-5"
+									width={'auto'}
+									height={'auto'}
 								/>
 								<Image
-									src={StepTwoMiddle}
-									alt=""
-									className="w-[44%] h-[80%] object-fill absolute left-4 bottom-4 z-0"
-									priority
+									src={StepTwoPerson}
+									alt="image"
+									className="h-[380px]"
+									width={'auto'}
+									height={'auto'}
 								/>
-								<Image
-									src={StepTwoUpper}
-									alt="Property Image"
-									className="w-[44%] h-[80%] object-fill z-10"
-									priority
-								/>
-								<Image
-									src={StepTwoCard}
-									alt="Property Image"
-									className="object-fill w-[40%] absolute z-[11] -bottom-2 sm:-bottom-10 md:-bottom-6 left-28 md:left-16"
-									priority
-								/>
-							</div>
-						</aside>
-						{/* Left-Side Ends here */}
-
-						{/* Right-Side Starts here */}
-						<aside className="h-full w-full flex md:justify-end items-center order-first md:order-last">
-							<div className="description-box w-[75%] md:w-[80%] lg:w-[90%]">
-								<p className="step-title">
+								<p className="absolute -bottom-4 lg:-bottom-10 right-0 lg:-right-1/2 w-[299px] paragraph rounded-lg bg-secondary border border-primary p-3 lg:p-5 text-negative">
+									We believe these agents are a good fit. Check them out!
+								</p>
+							</aside>
+							<aside className="h-full w-full flex md:justify-end items-center order-first md:order-last">
+								<div className="description-box w-[75%] md:w-[80%] lg:w-[90%]">
+									<p className="step-title">
+										<Image
+											src={Line}
+											alt="Line"
+											className="w-6 h-[2px]"
+											width={'auto'}
+											height={'auto'}
+										/>
+										Step two
+									</p>
+									<h2 className="section-heading">Recommendations</h2>
+									<p className="paragraph w-[90%]">
+										Sellers receive a curated list of recommended agents, each
+										tailored to meet their unique selling objectives.
+									</p>
+									<p className="paragraph w-[85%]">
+										We provide detailed profiles highlighting agent expertise,
+										track record, and approach to selling homes.
+									</p>
+								</div>
+							</aside>
+						</section>
+						{/*Step 3 */}
+						<section className="two-column-layout relative z-20">
+							<aside className="h-full w-full flex items-center">
+								<div className="description-box">
+									<p className="step-title">
+										<Image
+											src={Line}
+											alt="Line"
+											className="w-6 h-[2px]"
+											width={'auto'}
+											height={'auto'}
+										/>
+										Step three
+									</p>
+									<h2 className="section-heading">Matching</h2>
+									<p className="paragraph">
+										Leveraging our extensive network, we identify and match
+										sellers with top-performing real estate agents in their
+										area.
+									</p>
+									<p className="paragraph">
+										{
+											"Agents are selected based on expertise, local market knowledge, and alignment with the seller's goals."
+										}
+									</p>
+								</div>
+							</aside>
+							<aside className="h-full w-full flex justify-center relative">
+								<div className="grid grid-cols-2  relative">
+									<div className="relative">
+										<Image
+											src={StepThreeLeft}
+											alt="Property Image"
+											className="h-[260px] "
+											width={'auto'}
+											height={'auto'}
+										/>
+										<Image
+											src={StepThreeIcon}
+											alt="icon"
+											className="icon-size absolute bottom-14 lg:bottom-32 -right-5 lg:-right-10 z-10"
+											width={'auto'}
+											height={'auto'}
+										/>
+									</div>
 									<Image
-										src={Line}
-										alt="Line"
-										className="w-6 h-[2px]"
-										priority
+										src={StepThreeRight}
+										alt="Property Image"
+										className="relative -right-2 lg:-right-5 top-28 lg:top-44 h-[260px]"
+										width={'auto'}
+										height={'auto'}
 									/>
-									Step two
-								</p>
-								<h2 className="section-heading">Recommendations</h2>
-								<p className="paragraph w-[90%]">
-									Sellers receive a curated list of recommended agents, each
-									tailored to meet their unique selling objectives.
-								</p>
-								<p className="paragraph w-[85%]">
-									We provide detailed profiles highlighting agent expertise,
-									track record, and approach to selling homes.
-								</p>
+									<p className="paragraph absolute rounded-lg bg-secondary border border-primary p-3 lg:p-5 bottom-0 lg:bottom-14 left-8 lg:left-14">
+										{"It's a match!"}
+									</p>
+								</div>
+							</aside>
+						</section>
+						{/*Step 4 */}
+						<section className="two-column-layout">
+							<div className="relative">
+								<Image
+									src={StepFourImage}
+									alt="image"
+									className="h-[420px]"
+									width={'auto'}
+									height={'auto'}
+								/>
+								<Image
+									src={StepFourIcon}
+									alt="image"
+									className="icon-size absolute top-20 -left-5 lg:top-6 lg:-left-10"
+									width={'auto'}
+									height={'auto'}
+								/>
+								<Image
+									src={StepFourCard}
+									alt="image"
+									className="absolute w-[390px] h-[140px] -bottom-2 lg:-bottom-8 -left-4 lg:-left-20 "
+									width={'auto'}
+									height={'auto'}
+								/>
 							</div>
-						</aside>
-						{/* Right-Side Ends here */}
+							<aside className="h-full w-full flex md:justify-end items-center order-first md:order-last">
+								<div className="description-box w-[75%] md:w-[80%] lg:w-[90%]">
+									<p className="step-title">
+										<Image
+											src={Line}
+											alt="Line"
+											className="w-6 h-[2px]"
+											width={'auto'}
+											height={'auto'}
+										/>
+										Step four
+									</p>
+									<h2 className="section-heading">Engagement</h2>
+									<p className="paragraph w-[90%]">
+										Once the seller chooses their preferred agent, the
+										collaboration begins.
+									</p>
+									<p className="paragraph w-[85%]">
+										Our role includes facilitating communication and ensuring a
+										smooth partnership between the seller and agent.
+									</p>
+								</div>
+							</aside>
+						</section>
+						<div className="w-full flex justify-center">
+							<button className="btn-primary">
+								Get started today{' '}
+								<Image
+									src={ArrowRight}
+									alt="ArrowRight"
+									className="h-3 w-3.5"
+									width={'auto'}
+									height={'auto'}
+								/>
+							</button>
+						</div>
 					</section>
-					{/* What-to-do Step-----2 Ends here */}
-
-					{/* What-to-do Step-----3 Starts here */}
-					<section className="two-column-layout py-16">
-						{/* Left-Side Starts here */}
-						<aside className="h-full w-full flex items-center">
-							<div className="description-box">
-								<p className="step-title">
-									<Image
-										src={Line}
-										alt="Line"
-										className="w-6 h-[2px]"
-										priority
-									/>
-									Step three
-								</p>
-								<h2 className="section-heading">Matching</h2>
-								<p className="paragraph">
-									Leveraging our extensive network, we identify and match
-									sellers with top-performing real estate agents in their area.
-								</p>
-								<p className="paragraph">
-									{
-										"Agents are selected based on expertise, local market knowledge, and alignment with the seller's goals."
-									}
-								</p>
-							</div>
-						</aside>
-						{/* Left-Side Ends here */}
-
-						{/* Right-Side Starts here */}
-						<aside className="h-full w-full flex justify-center relative">
-							<div className="w-[60%] h-[80%] md:h-full md:w-full lg:w-full relative">
-								<Image
-									src={StepThreeLeft}
-									alt="Property Image"
-									className="w-[46%]"
-									priority
-								/>
-
-								<Image
-									src={StepThreeIcon}
-									alt="icon"
-									className="icon-size absolute left-[37%] lg:left-[40%] -bottom-5 lg:-bottom-7 z-[1]"
-									priority
-								/>
-
-								<Image
-									src={StepThreeRight}
-									alt="Property Image"
-									className="w-[46%] absolute right-7 -bottom-28 lg:-bottom-72"
-									priority
-								/>
-
-								<Image
-									src={StepThreeCard}
-									alt="Property Image"
-									className="w-[30%] absolute left-[5%] lg:left-[10%] -bottom-10 lg:-bottom-32"
-									priority
-								/>
-							</div>
-						</aside>
-						{/* Right-Side Ends here */}
-					</section>
-					{/* What-to-do Step-----3 Ends here */}
-
-					{/* What-to-do Step-----4 Starts here */}
-					<section className="two-column-layout py-16">
-						{/* Left-Side Starts here */}
-						<aside className="h-full w-full flex justify-center lg:justify-end relative">
-							<Image
-								src={StepFourImage}
-								alt=""
-								className="absolute w-[50%] sm:w-[35%] md:w-[75%] lg:w-[75%]"
-								priority
-							/>
-							<Image
-								src={StepFourIcon}
-								alt=""
-								className="icon-size absolute right-[45%] sm:right-[32%] left-14 md:left-[16%] lg:left-[16%] top-4"
-								priority
-							/>
-							<Image
-								src={StepFourCard}
-								alt=""
-								className="absolute w-[50%] -bottom-14 md:bottom-1 lg:bottom-3 right-[40%] sm:right-[10%] sm:w-[35%] md:w-[75%] lg:w-[75%] md:left-[10%] lg:left-[8%]"
-								priority
-							/>
-						</aside>
-						{/* Left-Side Ends here */}
-
-						{/* Right-Side Starts here */}
-						<aside className="h-full w-full flex md:justify-end items-center order-first md:order-last">
-							<div className="description-box w-[75%] md:w-[80%] lg:w-[90%]">
-								<p className="step-title">
-									<Image
-										src={Line}
-										alt="Line"
-										className="w-6 h-[2px]"
-										priority
-									/>
-									Step four
-								</p>
-								<h2 className="section-heading">Engagement</h2>
-								<p className="paragraph w-[90%]">
-									Once the seller chooses their preferred agent, the
-									collaboration begins.
-								</p>
-								<p className="paragraph w-[85%]">
-									Our role includes facilitating communication and ensuring a
-									smooth partnership between the seller and agent.
-								</p>
-							</div>
-						</aside>
-						{/* Right-Side Ends here */}
-					</section>
-					{/* What-to-do Step-----4 Ends here */}
-
-					<div className="w-full flex justify-center">
-						<button className="btn-primary">
-							Get Started <Image src={ArrowRight} className="h-3.5 w-3" />
-						</button>
-					</div>
-				</section>
+				</div>
 			</div>
-			{/* How-it-works Section Ends here */}
 
-			{/* Services Section Starts here */}
-			<div className="relative z-0 bg-secondary">
-				<section className="services-section max-w-screen-2xl mx-auto w-full">
-					{/* Heading /  Header*/}
-					<div className="flex flex-col gap-2 md:gap-4 lg:gap-6 text-center max-w-[550px]">
+			{/* Services Section */}
+			<div className="bg-secondary">
+				<section className="main-container items-center max-w-5xl mx-auto gap-[60px] lg:gap-[140px] pb-[60px] lg:pb-[180px]">
+					<div className="section-header">
 						<h2 className="section-heading">You hold all the cards</h2>
-						<p className="paragraph">
+						<p className="section-desc">
 							Sell your home with confidence – choose ListingPartners, your
 							go-to platform for connecting with the perfect.
 						</p>
 					</div>
-
-					{/* Service-----1 Starts here */}
-					<section className="two-column-layout">
-						{/* Left-Side Starts here */}
+					<section className="two-column-layout md:!gap-8 lg:!gap-32">
 						<aside className="h-full w-full flex items-center">
 							<div className="description-box !w-full">
 								<p className="step-title">
 									<Image
 										src={Line}
 										alt="Line"
-										className="w-6 h-[2px] mx-auto"
-										priority
+										className="w-6 h-[2px]"
+										width={'auto'}
+										height={'auto'}
 									/>
 									Consult
 								</p>
 								<h2 className="section-heading">Consultation and decision</h2>
-								<p className="paragraph">
+								<p className="paragraph max-w-md">
 									Sellers have the opportunity to schedule consultations with
 									the selected agents where sellers can ask questions, discuss
 									strategies, and determine the best fit before making a
 									decision.
 								</p>
-
 								<div className="mt-4">
 									<button className="btn-primary">
-										Book a time <Image src={ArrowRight} className="h-3.5 w-3" />
+										Book a time{' '}
+										<Image
+											src={ArrowRight}
+											alt="ArrowRight"
+											className="h-3 w-3.5"
+											width={'auto'}
+											height={'auto'}
+										/>
 									</button>
 								</div>
 							</div>
 						</aside>
-						{/* Left-Side Ends here */}
-
-						{/* Right-Side Starts here */}
-						<aside className="h-full w-full flex justify-center relative z-0">
-							<Image
-								src={FirstServiceImage}
-								alt="Property Image"
-								className="w-full h-full sm:w-[90%] sm:h-[90%] md:w-full md:h-full object-fill"
-								priority
-							/>
-							<Image
-								src={FirstServiceIcon}
-								alt="Property Image"
-								className="icon-size absolute top-4 -left-2"
-								priority
-							/>
-							<div className="w-[80%] h-[80%] md:w-[60%] md:h-[60%] sm:w-[70%] sm:h-[70%] bg-primary absolute -z-[1] -right-4 -bottom-4 md:-right-4 md:bottom-8 sm:right-8 sm:bottom-4"></div>
-						</aside>
-						{/* Right-Side Ends here */}
-					</section>
-					{/* Service-----1 Ends here */}
-
-					{/* Service-----2 Starts here */}
-					<section className="two-column-layout">
-						{/* Left-Side Starts here */}
 						<aside className="h-full w-full flex justify-center relative z-0">
 							<Image
 								src={SecondServiceImage}
 								alt="Property Image"
-								className="w-full h-full sm:w-[90%] sm:h-[90%] md:w-full md:h-full object-fill"
-								priority
+								width={'auto'}
+								height={'auto'}
 							/>
-							<Image
-								src={SecondServiceIcon}
-								alt="Property Image"
-								className="icon-size absolute top-5 -left-2"
-								priority
-							/>
-							<div className="w-[80%] h-[80%] md:w-[60%] md:h-[60%] sm:w-[70%] sm:h-[70%] bg-primary absolute -z-[1] -left-4 -bottom-4 md:-left-4 md:bottom-8 sm:left-8 sm:bottom-4"></div>
 						</aside>
-						{/* Left-Side Ends here */}
-
-						{/* Right-Side Starts here */}
+					</section>
+					<section className="two-column-layout md:!gap-8 lg:!gap-32">
+						<aside className="h-full w-full flex justify-center relative z-0">
+							<Image
+								src={FirstServiceImage}
+								alt="Property Image"
+								width={'auto'}
+								height={'auto'}
+							/>
+						</aside>
 						<aside className="h-full w-full flex md:justify-end items-center order-first md:order-last">
 							<div className="description-box w-full">
 								<p className="step-title">
@@ -666,40 +606,44 @@ export default function Home() {
 										src={Line}
 										alt="Line"
 										className="w-6 h-[2px]"
-										priority
+										width={'auto'}
+										height={'auto'}
 									/>
 									Support
 								</p>
 								<h2 className="section-heading">
 									Optimized selling experience
 								</h2>
-								<p className="paragraph w-[90%]">
+								<p className="paragraph max-w-sm">
 									Throughout the selling process, we offer support, guidance,
 									and advice to ensure a successful sale.
 								</p>
-								<p className="paragraph w-[85%]">
+								<p className="paragraph max-w-sm">
 									We aim for a seamless experience, empowering sellers and
 									agents toward their shared goal: a successful home sale.
 								</p>
-
 								<div className="mt-4">
 									<button className="btn-primary">
-										Contact us <Image src={ArrowRight} className="h-3.5 w-3" />
+										Contact us{' '}
+										<Image
+											src={ArrowRight}
+											alt="ArrowRight"
+											className="h-3 w-3.5"
+											width={'auto'}
+											height={'auto'}
+										/>
 									</button>
 								</div>
 							</div>
 						</aside>
-						{/* Right-Side Ends here */}
 					</section>
-					{/* Service-----2 Ends here */}
 				</section>
 			</div>
-			{/* Services section Ends here */}
 
-			{/* Slider section Starts here */}
-			<div className="relative bg-primary">
-				<section className="slider-section max-w-screen-2xl mx-auto w-full">
-					<div className="two-column-layout">
+			{/* Testimonials Section */}
+			<div className="bg-primary relative">
+				<section className="main-container max-w-5xl mx-auto px-5 items-center pt-[60px] lg:pt-[100px] pb-[180px]">
+					<div className="two-column-layout lg:gap-32">
 						<aside className="h-full w-full flex items-center">
 							<div className="description-box !w-full">
 								<p className="step-title">
@@ -707,7 +651,8 @@ export default function Home() {
 										src={Line}
 										alt="Line"
 										className="w-6 h-[2px]"
-										priority
+										width={'auto'}
+										height={'auto'}
 									/>
 									Testimonials
 								</p>
@@ -723,18 +668,24 @@ export default function Home() {
 
 								<div className="mt-4">
 									<button className="btn-primary">
-										Book a time <Image src={ArrowRight} className="h-3.5 w-3" />
+										Book a time{' '}
+										<Image
+											src={ArrowRight}
+											alt="ArrowRight"
+											className="h-3 w-3.5"
+											width={'auto'}
+											height={'auto'}
+										/>
 									</button>
 								</div>
 							</div>
 						</aside>
 
 						<aside className="w-full">
-							{/* Card */}
-							<div className="relative">
+							<div className="lg:w-[700px] lg:absolute top-24 right-5 lg:right-0">
 								<SwiperSlider
 									slidesData={reviews}
-									slidesPerView={1.5}
+									slidesPerView={1.7}
 									spaceBetween={40}
 								>
 									{reviews.map((data) => (
@@ -744,107 +695,131 @@ export default function Home() {
 									))}
 								</SwiperSlider>
 							</div>
-							{/* Commented Cards Ends here  */}
 						</aside>
 					</div>
 				</section>
 			</div>
-			{/* Slider section Ends here */}
 
-			{/* Footer section Starts here */}
-			<div className="relative bg-primary">
-				<footer className="footer-section max-w-screen-2xl mx-auto w-full">
+			{/* Footer section */}
+			<div className=" bg-secondary">
+				<footer
+					id="contact"
+					className="main-container py-11 grid lg:grid-cols-3 max-w-screen-2xl mx-auto"
+				>
 					<aside className="flex flex-col justify-between">
-						<section className="flex justify-between align-top">
-							<Image
-								src={Logo}
-								className="w-[100px] h-[25px] md:w-[150px] md:h-[25px] lg:w-[207px] lg:h-[30px]"
-							/>
-
-							<div className="footer-links-box relative lg:-left-20">
-								<p className="paragraph mb-2 text-negative/50 font-medium uppercase">
-									social
-								</p>
-								<div className="flex gap-2 md:gap-4">
-									<Image src={Linkedin} className="h-3 w-3 md:w-4 md:h-4" />
-									<Image src={TwitterX} className="h-3 w-3 md:w-4 md:h-4" />
-									<Image src={Instagram} className="h-3 w-3 md:w-4 md:h-4" />
-								</div>
-							</div>
-						</section>
-
-						<section className="flex flex-col gap-4">
-							<p className="paragraph">ABN: 86 768 265 615</p>
-							<p className="paragraph w-[55%]">
+						<Image
+							src={Logo}
+							alt="logo"
+							className="w-[150px] h-[25px] lg:w-[207px] lg:h-[30px] mb-10 md:mb-0"
+							width={'auto'}
+							height={'auto'}
+						/>
+						<section className="flex flex-col gap-4 mt-10 lg:mt-44">
+							<p className="paragraph text-negative/75">ABN: 86 768 265 615</p>
+							<p className="paragraph text-negative/75">
 								Level 13 / 465 Victoria Ave, Chatswood New South Wales Australia
 								2067
 							</p>
-
 							<p className="text-xs md:text-sm mt-4 opacity-50">
 								Copyright © 2023, ListingPartners. All rights reserved.
 							</p>
 						</section>
 					</aside>
 
-					<aside className="grid grid-cols-3 gap-1 sm:gap-2 md:gap-3 order-1">
-						<div className="footer-links-box">
-							<p className="paragraph mb-1 text-negative/50 font-medium uppercase">
-								Services
-							</p>
-
-							<a href="#" className="paragraph hover:underline">
+					<aside className="lg:col-span-2 grid lg:grid-cols-4 gap-5 md:gap-4 order-1">
+						<div className="footer-links-container">
+							<p className="footer-links-heading">social</p>
+							<div className="flex items-center gap-3 md:gap-8">
+								<a href="#" className="link">
+									<Image
+										src={Linkedin}
+										alt="image"
+										className="h-4 w-4 md:w-5 md:h-5"
+										width={'auto'}
+										height={'auto'}
+									/>
+								</a>
+								<a href="#" className="link">
+									<Image
+										src={TwitterX}
+										alt="image"
+										className="h-4 w-4 md:w-5 md:h-5"
+										width={'auto'}
+										height={'auto'}
+									/>
+								</a>
+								<a href="#" className="link">
+									<Image
+										src={Instagram}
+										alt="image"
+										className="h-4 w-4 md:w-5 md:h-5"
+										width={'auto'}
+										height={'auto'}
+									/>
+								</a>
+							</div>
+						</div>
+						<div className="footer-links-container">
+							<p className="footer-links-heading">Services</p>
+							<a href="#" className="link">
 								Get Started
 							</a>
-							<a href="#" className="paragraph hover:underline">
+							<a href="#" className="link">
 								How it works
 							</a>
-							<a href="#" className="paragraph hover:underline">
+							<a href="#" className="link">
 								Our Support
 							</a>
-							<a href="#" className="paragraph hover:underline">
+							<a href="#" className="link">
 								Testimonials
 							</a>
-							<a href="#" className="paragraph hover:underline">
+							<a href="#" className="link">
 								FAQ
 							</a>
 						</div>
 
-						<div className="footer-links-box">
-							<p className="paragraph mb-1 text-negative/50 font-medium uppercase">
-								Services
-							</p>
-
-							<a href="#" className="paragraph hover:underline">
+						<div className="footer-links-container">
+							<p className="footer-links-heading">Navigation</p>
+							<a href="#" className="link">
 								Home
 							</a>
-							<a href="#" className="paragraph hover:underline">
+							<a href="#" className="link">
 								About us
 							</a>
-							<a href="#" className="paragraph hover:underline">
+							<a href="#" className="link">
 								Terms of service
 							</a>
-							<a href="#" className="paragraph hover:underline">
+							<a href="#" className="link">
 								Privacy policy
 							</a>
 						</div>
-
-						<div className="footer-links-box gap-4">
-							<p className="paragraph text-negative/50 font-medium uppercase">
-								Contact
-							</p>
-
-							<p className="paragraph">+61 1300 619 528</p>
-
+						<div className="footer-links-container gap-4">
+							<p className="footer-links-heading">Contact</p>
+							<a href="tel:+611300619528" className="link">
+								+61 1300 619 528
+							</a>
 							<div>
-								<button className="btn-primary text-[10px]">
-									Contact us <Image src={ArrowRight} className="h-3.5 w-3" />
+								<button
+									onClick={() => setShowContactModal(true)}
+									className="btn-primary"
+								>
+									Contact us
+									<Image
+										src={ArrowRight}
+										alt="ArrowRight"
+										className="h-2.5 w-2 lg:h-3.5 lg:w-3"
+										width={'auto'}
+										height={'auto'}
+									/>
 								</button>
 							</div>
 						</div>
 					</aside>
 				</footer>
 			</div>
-			{/* Footer section Ends here */}
+			{showContactModal && (
+				<ContactModal handleClose={() => setShowContactModal(false)} />
+			)}
 		</main>
 	)
 }
