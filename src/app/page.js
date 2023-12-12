@@ -1,10 +1,12 @@
 /* eslint-disable jsx-a11y/alt-text */
 'use client'
-import React, { useState } from 'react'
-import { SwiperSlide } from 'swiper/react'
+import React, { useState, useEffect } from 'react'
+import TagManager from 'react-gtm-module'
 
 import Image from 'next/image'
 import Link from 'next/link'
+
+import { SwiperSlide } from 'swiper/react'
 
 import Logo from '../assets/Logo.svg'
 import VideoThumbnail from '../assets/images/videoImage.svg'
@@ -54,6 +56,23 @@ export default function Home() {
 	const [hideVideoThumbnail, setHideVideoThumbnail] = useState(false)
 	const [showNav, setShowNav] = useState(false)
 	const [showContactModal, setShowContactModal] = useState(false)
+
+	useEffect(() => {
+		const handleRouteChange = (url) => {
+			// Initialize GTM on the initial page load
+			TagManager.initialize({ gtmId: 'GTM-PQNT5XPD' })
+
+			// Send a page view event on route change
+			window.dataLayer.push({
+				event: 'pageview',
+				pagePath: url,
+			})
+		}
+
+		// Initialize GTM and handle route changes
+		const pageUrl = window?.location?.href | ''
+		handleRouteChange(pageUrl)
+	}, [])
 
 	const reviews = [
 		{
