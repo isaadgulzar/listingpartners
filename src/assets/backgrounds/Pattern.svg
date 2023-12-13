@@ -1,39 +1,39 @@
 <svg width="1440" height="240" viewBox="0 0 1440 240" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g opacity="0.75">
 <rect width="480" height="240" fill="#002429"/>
-<g style="mix-blend-mode:overlay" opacity="0.5">
+<g style={{mixBlendMode : 'overlay'}} opacity="0.5">
 <path d="M0 60L60 0L120 60L120 120H0V60Z" fill="white"/>
 <path d="M120 60L180 0L240 60L240 120H120V60Z" fill="#A2A2A2"/>
 <path d="M240 60L300 0L360 60L360 120H240V60Z" fill="white"/>
 <path d="M360 60L420 0L480 60L480 120H360V60Z" fill="#A2A2A2"/>
 </g>
-<g style="mix-blend-mode:overlay" opacity="0.5">
+<g style={{mixBlendMode : 'overlay'}} opacity="0.5">
 <path d="M0 180L60 120L120 180L120 240H0V180Z" fill="#A2A2A2"/>
 <path d="M120 180L180 120L240 180L240 240H120V180Z" fill="white"/>
 <path d="M240 180L300 120L360 180L360 240H240V180Z" fill="#A2A2A2"/>
 <path d="M360 180L420 120L480 180L480 240H360V180Z" fill="white"/>
 </g>
 <rect width="480" height="240" transform="translate(480)" fill="#002429"/>
-<g style="mix-blend-mode:overlay" opacity="0.5">
+<g style={{mixBlendMode : 'overlay'}} opacity="0.5">
 <path d="M480 60L540 0L600 60L600 120H480V60Z" fill="white"/>
 <path d="M600 60L660 0L720 60L720 120H600V60Z" fill="#A2A2A2"/>
 <path d="M720 60L780 0L840 60L840 120H720V60Z" fill="white"/>
 <path d="M840 60L900 0L960 60L960 120H840V60Z" fill="#A2A2A2"/>
 </g>
-<g style="mix-blend-mode:overlay" opacity="0.5">
+<g style={{mixBlendMode : 'overlay'}} opacity="0.5">
 <path d="M480 180L540 120L600 180L600 240H480V180Z" fill="#A2A2A2"/>
 <path d="M600 180L660 120L720 180L720 240H600V180Z" fill="white"/>
 <path d="M720 180L780 120L840 180L840 240H720V180Z" fill="#A2A2A2"/>
 <path d="M840 180L900 120L960 180L960 240H840V180Z" fill="white"/>
 </g>
 <rect width="480" height="240" transform="translate(960)" fill="#002429"/>
-<g style="mix-blend-mode:overlay" opacity="0.5">
+<g style={{mixBlendMode : 'overlay'}} opacity="0.5">
 <path d="M960 60L1020 0L1080 60L1080 120H960V60Z" fill="white"/>
 <path d="M1080 60L1140 0L1200 60L1200 120H1080V60Z" fill="#A2A2A2"/>
 <path d="M1200 60L1260 0L1320 60L1320 120H1200V60Z" fill="white"/>
 <path d="M1320 60L1380 0L1440 60L1440 120H1320V60Z" fill="#A2A2A2"/>
 </g>
-<g style="mix-blend-mode:overlay" opacity="0.5">
+<g style={{mixBlendMode : 'overlay'}} opacity="0.5">
 <path d="M960 180L1020 120L1080 180L1080 240H960V180Z" fill="#A2A2A2"/>
 <path d="M1080 180L1140 120L1200 180L1200 240H1080V180Z" fill="white"/>
 <path d="M1200 180L1260 120L1320 180L1320 240H1200V180Z" fill="#A2A2A2"/>
