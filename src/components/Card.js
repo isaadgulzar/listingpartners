@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image'
 import React, { useState } from 'react'
-import Star from '../assets/icons/Star.svg'
+import Star from '../../public/assets/icons/Star.svg'
 
 const Card = ({ review }) => {
 	const [showModal, setShowModal] = useState(false)
@@ -17,7 +17,7 @@ const Card = ({ review }) => {
 					src={review?.image}
 					alt="Image"
 					className="w-full h-full object-cover"
-					priority
+					quality={60}
 				/>
 			</div>
 
@@ -28,13 +28,7 @@ const Card = ({ review }) => {
 						<p className="paragraph font-bold max-w-max">{review.name}</p>
 						<span className="w-40 flex gap-1 flex-shrink-0">
 							{Array.from({ length: 5 }, (_, i) => (
-								<Image
-									key={i}
-									src={Star}
-									alt="Image"
-									className="w-4 h-4"
-									priority
-								/>
+								<Image key={i} src={Star} alt="Image" className="w-4 h-4" />
 							))}
 						</span>
 					</h2>

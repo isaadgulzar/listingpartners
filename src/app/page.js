@@ -8,45 +8,45 @@ import Link from 'next/link'
 
 import { SwiperSlide } from 'swiper/react'
 
-import Logo from '../assets/Logo.svg'
-import VideoThumbnail from '../assets/images/videoImage.svg'
-import StepOneImage from '../assets/images/StepOneImage.svg'
-import Form from '../assets/images/Form.svg'
-import StepTwoPerson from '../assets/images/StepTwoPerson.svg'
-import StepThreeLeft from '../assets/images/StepThreeLeft.svg'
-import StepThreeRight from '../assets/images/StepThreeRight.svg'
-import StepFourImage from '../assets/images/StepFourImage.svg'
-import StepFourCard from '../assets/images/StepFourCard.svg'
-import FirstServiceImage from '../assets/images/FirstServiceImage.svg'
-import SecondServiceImage from '../assets/images/SecondServiceImage.svg'
-import CardImage1 from '../assets/images/card1.svg'
-import CardImage2 from '../assets/images/card2.svg'
-import CardImage3 from '../assets/images/card3.svg'
-import CardImage4 from '../assets/images/card4.svg'
-import CardImage5 from '../assets/images/card5.svg'
+import Logo from '../../public/assets/Logo.svg'
+import VideoThumbnail from '../../public/assets/images/videoImage.svg'
+import StepOneImage from '../../public/assets/images/StepOneImage.svg'
+import Form from '../../public/assets/images/Form.svg'
+import StepTwoPerson from '../../public/assets/images/StepTwoPerson.svg'
+import StepThreeLeft from '../../public/assets/images/StepThreeLeft.svg'
+import StepThreeRight from '../../public/assets/images/StepThreeRight.svg'
+import StepFourImage from '../../public/assets/images/StepFourImage.svg'
+import StepFourCard from '../../public/assets/images/StepFourCard.svg'
+import FirstServiceImage from '../../public/assets/images/FirstServiceImage.svg'
+import SecondServiceImage from '../../public/assets/images/SecondServiceImage.svg'
+import CardImage1 from '../../public/assets/images/card1.svg'
+import CardImage2 from '../../public/assets/images/card2.svg'
+import CardImage3 from '../../public/assets/images/card3.svg'
+import CardImage4 from '../../public/assets/images/card4.svg'
+import CardImage5 from '../../public/assets/images/card5.svg'
 
-import Intersect from '../assets/backgrounds/Intersect.svg'
-import Union from '../assets/backgrounds/U.svg'
-import Pattern from '../assets/backgrounds/Pattern.svg'
+import Intersect from '../../public/assets/backgrounds/Intersect.svg'
+import Union from '../../public/assets/backgrounds/Union.svg'
+import Pattern from '../../public/assets/backgrounds/Pattern.svg'
 
-import Century21 from '../assets/partners/century21.svg'
-import Elders from '../assets/partners/Elders.svg'
-import Hooker from '../assets/partners/Hooker.svg'
-import McGrath from '../assets/partners/McGrath.svg'
-import Remax from '../assets/partners/Remax.svg'
+import Century21 from '../../public/assets/partners/century21.svg'
+import Elders from '../../public/assets/partners/Elders.svg'
+import Hooker from '../../public/assets/partners/Hooker.svg'
+import McGrath from '../../public/assets/partners/McGrath.svg'
+import Remax from '../../public/assets/partners/Remax.svg'
 
-import ArrowRight from '../assets/icons/ArrowRight.svg'
-import PlayIcon from '../assets/icons/Play.svg'
-import Line from '../assets/icons/Line.svg'
-import Scan from '../assets/icons/Scan.svg'
-import StepTwoIcon from '../assets/icons/StepTwoIcon.svg'
-import StepThreeIcon from '../assets/icons/StepThreeIcon.svg'
-import StepFourIcon from '../assets/icons/StepFourIcon.svg'
-import Instagram from '../assets/icons/instagram.svg'
-import Linkedin from '../assets/icons/linkedin-in.svg'
-import TwitterX from '../assets/icons/x.svg'
-import OpenMenu from '../assets/icons/menu-open.svg'
-import Cross from '../assets/icons/cross.svg'
+import ArrowRight from '../../public/assets/icons/ArrowRight.svg'
+import PlayIcon from '../../public/assets/icons/Play.svg'
+import Line from '../../public/assets/icons/Line.svg'
+import Scan from '../../public/assets/icons/Scan.svg'
+import StepTwoIcon from '../../public/assets/icons/StepTwoIcon.svg'
+import StepThreeIcon from '../../public/assets/icons/StepThreeIcon.svg'
+import StepFourIcon from '../../public/assets/icons/StepFourIcon.svg'
+import Instagram from '../../public/assets/icons/instagram.svg'
+import Linkedin from '../../public/assets/icons/linkedin-in.svg'
+import TwitterX from '../../public/assets/icons/x.svg'
+import OpenMenu from '../../public/assets/icons/menu-open.svg'
+import Cross from '../../public/assets/icons/cross.svg'
 
 import SwiperSlider from '@/components/SwiperSlider'
 import Card from '@/components/Card'
@@ -170,10 +170,10 @@ export default function Home() {
 						)}
 					</button>
 
-					<button className="btn-solid hidden md:flex">
+					<a href="#about" className="btn-solid hidden md:flex">
 						Get Started{' '}
 						<Image src={ArrowRight} alt="ArrowRight" className="h-3 w-3.5" />
-					</button>
+					</a>
 				</nav>
 				<nav className={`${showNav ? 'flex w-full' : 'hidden'}`}>
 					<ul className="absolute top-14 left-0 z-40 flex w-full flex-col bg-secondary pt-0 h-40 justify-center items-center gap-2 md:gap-4 lg:gap-6">
@@ -214,10 +214,10 @@ export default function Home() {
 							go-to platform for connecting with the perfect real estate agent
 							in Australia.
 						</p>
-						<button className="btn-primary">
+						<a href="#about" className="btn-primary max-w-max">
 							Get Started{' '}
 							<Image src={ArrowRight} alt="ArrowRight" className="h-3 w-3.5" />
-						</button>
+						</a>
 					</aside>
 					<aside className="relative w-full h-[300px] md:h-[400px] md:w-[550px]">
 						<div className="absolute -right-7 -bottom-7 md:h-[300px] md:w-[380px] bg-ternary"></div>
@@ -270,6 +270,7 @@ export default function Home() {
 								className="h-6 lg:h-12 w-[236px]"
 								width={'auto'}
 								height={'auto'}
+								quality={80}
 							/>
 						</div>
 						<div className="partner-item">
@@ -279,6 +280,7 @@ export default function Home() {
 								className="h-6 lg:h-12 w-[191px]"
 								width={'auto'}
 								height={'auto'}
+								quality={80}
 							/>
 						</div>
 						<div className="partner-item">
@@ -288,6 +290,7 @@ export default function Home() {
 								className="h-6 lg:h-12 w-[166px]"
 								width={'auto'}
 								height={'auto'}
+								quality={80}
 							/>
 						</div>
 						<div className="partner-item">
@@ -297,6 +300,7 @@ export default function Home() {
 								className="h-6 lg:h-12 w-[123px]"
 								width={'auto'}
 								height={'auto'}
+								quality={80}
 							/>
 						</div>
 						<div className="partner-item">
@@ -306,6 +310,7 @@ export default function Home() {
 								className="h-6 lg:h-12 w-[172px]"
 								width={'auto'}
 								height={'auto'}
+								quality={80}
 							/>
 						</div>
 					</div>
@@ -370,6 +375,7 @@ export default function Home() {
 										className="h-[300px]"
 										width={'auto'}
 										height={'auto'}
+										quality={70}
 									/>
 									<Image
 										src={Scan}
@@ -377,6 +383,7 @@ export default function Home() {
 										className="icon-size absolute top-10 lg:top-8 -left-4 lg:-left-9"
 										width={'auto'}
 										height={'auto'}
+										quality={70}
 									/>
 									<Image
 										src={Form}
@@ -384,6 +391,7 @@ export default function Home() {
 										className="absolute bottom-0 -left-4 lg:-left-24"
 										width={'auto'}
 										height={'auto'}
+										quality={70}
 									/>
 								</div>
 							</aside>
@@ -397,6 +405,7 @@ export default function Home() {
 									className="icon-size absolute -right-28 -top-5"
 									width={'auto'}
 									height={'auto'}
+									quality={70}
 								/>
 								<Image
 									src={StepTwoPerson}
@@ -404,6 +413,7 @@ export default function Home() {
 									className="h-[380px]"
 									width={'auto'}
 									height={'auto'}
+									quality={70}
 								/>
 								<p className="absolute -bottom-4 lg:-bottom-10 right-0 lg:-right-1/2 w-[299px] paragraph rounded-lg bg-secondary border border-primary p-3 lg:p-5 text-negative">
 									We believe these agents are a good fit. Check them out!
@@ -469,6 +479,7 @@ export default function Home() {
 											className="h-[260px] "
 											width={'auto'}
 											height={'auto'}
+											quality={70}
 										/>
 										<Image
 											src={StepThreeIcon}
@@ -476,6 +487,7 @@ export default function Home() {
 											className="icon-size absolute bottom-14 lg:bottom-32 -right-5 lg:-right-10 z-10"
 											width={'auto'}
 											height={'auto'}
+											quality={70}
 										/>
 									</div>
 									<Image
@@ -484,6 +496,7 @@ export default function Home() {
 										className="relative -right-2 lg:-right-5 top-28 lg:top-44 h-[260px]"
 										width={'auto'}
 										height={'auto'}
+										quality={70}
 									/>
 									<p className="paragraph absolute rounded-lg bg-secondary border border-primary p-3 lg:p-5 bottom-0 lg:bottom-14 left-8 lg:left-14">
 										{"It's a match!"}
@@ -500,6 +513,7 @@ export default function Home() {
 									className="h-[420px]"
 									width={'auto'}
 									height={'auto'}
+									quality={70}
 								/>
 								<Image
 									src={StepFourIcon}
@@ -507,6 +521,7 @@ export default function Home() {
 									className="icon-size absolute top-20 -left-5 lg:top-6 lg:-left-10"
 									width={'auto'}
 									height={'auto'}
+									quality={70}
 								/>
 								<Image
 									src={StepFourCard}
@@ -514,6 +529,7 @@ export default function Home() {
 									className="absolute w-[390px] h-[140px] -bottom-2 lg:-bottom-8 -left-4 lg:-left-20 "
 									width={'auto'}
 									height={'auto'}
+									quality={70}
 								/>
 							</div>
 							<aside className="h-full w-full flex md:justify-end items-center order-first md:order-last">
@@ -541,7 +557,7 @@ export default function Home() {
 							</aside>
 						</section>
 						<div className="w-full flex justify-center">
-							<button className="btn-primary">
+							<a href="#services" className="btn-primary">
 								Get started today{' '}
 								<Image
 									src={ArrowRight}
@@ -550,14 +566,14 @@ export default function Home() {
 									width={'auto'}
 									height={'auto'}
 								/>
-							</button>
+							</a>
 						</div>
 					</section>
 				</div>
 			</div>
 
 			{/* Services Section */}
-			<div className="bg-secondary">
+			<div id="services" className="bg-secondary">
 				<section className="main-container items-center max-w-5xl mx-auto gap-[60px] lg:gap-[140px] pb-[60px] lg:pb-[180px]">
 					<div className="section-header">
 						<h2 className="section-heading">You hold all the cards</h2>
@@ -587,7 +603,10 @@ export default function Home() {
 									decision.
 								</p>
 								<div className="mt-4">
-									<button className="btn-primary">
+									<button
+										onClick={() => setShowContactModal(true)}
+										className="btn-primary"
+									>
 										Book a time{' '}
 										<Image
 											src={ArrowRight}
@@ -606,6 +625,7 @@ export default function Home() {
 								alt="Property Image"
 								width={'auto'}
 								height={'auto'}
+								quality={70}
 							/>
 						</aside>
 					</section>
@@ -616,6 +636,7 @@ export default function Home() {
 								alt="Property Image"
 								width={'auto'}
 								height={'auto'}
+								quality={70}
 							/>
 						</aside>
 						<aside className="h-full w-full flex md:justify-end items-center order-first md:order-last">
@@ -642,7 +663,7 @@ export default function Home() {
 									agents toward their shared goal: a successful home sale.
 								</p>
 								<div className="mt-4">
-									<button className="btn-primary">
+									<a href="#contact" className="btn-primary max-w-max">
 										Contact us{' '}
 										<Image
 											src={ArrowRight}
@@ -651,7 +672,7 @@ export default function Home() {
 											width={'auto'}
 											height={'auto'}
 										/>
-									</button>
+									</a>
 								</div>
 							</div>
 						</aside>
@@ -686,7 +707,10 @@ export default function Home() {
 								</p>
 
 								<div className="mt-4">
-									<button className="btn-primary">
+									<button
+										onClick={() => setShowContactModal(true)}
+										className="btn-primary"
+									>
 										Book a time{' '}
 										<Image
 											src={ArrowRight}

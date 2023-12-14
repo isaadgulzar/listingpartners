@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Image from 'next/image'
-import ArrowRight from '../assets/icons/ArrowRight.svg'
+import ArrowRight from '../../public/assets/icons/ArrowRight.svg'
 import CalendlyEmbed from './CalendlyEmbed'
 import '../app/globals.css'
 
@@ -52,7 +52,7 @@ const ContactModal = ({ handleClose }) => {
 				<div onClick={handleClose} className="fixed inset-0 transition-opacity">
 					<div className="absolute inset-0 z-0 bg-secondary bg-opacity-90"></div>
 				</div>
-				<h1 className="main-heading text-center relative z-10 pt-32 pb-16">
+				<h1 className="main-heading text-center relative z-10 pt-32 pb-16 max-w-max mx-auto">
 					Sell smarter<span className="full-stop">.</span> Everyday
 					<span className="full-stop">.</span>
 				</h1>
