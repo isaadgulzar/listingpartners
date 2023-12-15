@@ -127,11 +127,7 @@ export default function Home() {
 	]
 
 	return (
-		<main
-			className={`w-full font-montserrat text-negative ${
-				showContactModal ? 'h-screen overflow-hidden' : ''
-			}`}
-		>
+		<main className={`w-full font-montserrat text-negative`}>
 			{/* Header Section */}
 			<header className="relative px-6 md:px-10 h-[50px] lg:h-[84px] flex flex-col justify-center bg-primary">
 				<nav className="flex justify-between items-center max-w-screen-2xl mx-auto w-full">
@@ -747,17 +743,17 @@ export default function Home() {
 			<div className=" bg-secondary">
 				<footer
 					id="contact"
-					className="main-container py-11 grid lg:grid-cols-3 max-w-screen-2xl mx-auto"
+					className="main-container gap-[30px] lg:gap-[120px] py-5 lg:py-11 grid lg:grid-cols-3 max-w-screen-2xl mx-auto"
 				>
 					<aside className="flex flex-col justify-between">
 						<Image
 							src={Logo}
 							alt="logo"
-							className="w-[150px] h-[25px] lg:w-[207px] lg:h-[30px] mb-10 md:mb-0"
+							className="w-[150px] h-[25px] lg:w-[207px] lg:h-[30px]"
 							width={'auto'}
 							height={'auto'}
 						/>
-						<section className="flex flex-col gap-4 mt-10 lg:mt-44">
+						<section className="hidden lg:flex flex-col gap-4 mt-10 lg:mt-44">
 							<p className="paragraph text-negative/75">ABN: 86 768 265 615</p>
 							<p className="paragraph text-negative/75">
 								Level 13 / 465 Victoria Ave, Chatswood New South Wales Australia
@@ -769,8 +765,8 @@ export default function Home() {
 						</section>
 					</aside>
 
-					<aside className="lg:col-span-2 grid lg:grid-cols-4 gap-5 md:gap-4 order-1">
-						<div className="footer-links-container">
+					<aside className="lg:col-span-2 grid grid-cols-2 lg:grid-cols-4 gap-7 md:gap-4 order-1">
+						<div className="col-span-2 lg:col-span-1 footer-links-container">
 							<p className="footer-links-heading">social</p>
 							<div className="flex items-center gap-3 md:gap-8">
 								<a href="#" className="link">
@@ -836,14 +832,17 @@ export default function Home() {
 								Privacy policy
 							</a>
 						</div>
-						<div className="footer-links-container gap-4">
+						<div className="col-span-2 lg:col-span-1 footer-links-container gap-4">
 							<p className="footer-links-heading">Contact</p>
 							<a href="tel:+611300619528" className="link">
 								+61 1300 619 528
 							</a>
 							<div>
 								<button
-									onClick={() => setShowContactModal(true)}
+									onClick={(e) => {
+										e.stopPropagation()
+										setShowContactModal(true)
+									}}
 									className="btn-primary"
 								>
 									Contact us
@@ -858,6 +857,17 @@ export default function Home() {
 							</div>
 						</div>
 					</aside>
+
+					<section className="flex lg:hidden flex-col gap-4 mt-10 lg:mt-44 order-2">
+						<p className="paragraph text-negative/75">ABN: 86 768 265 615</p>
+						<p className="paragraph text-negative/75">
+							Level 13 / 465 Victoria Ave, Chatswood New South Wales Australia
+							2067
+						</p>
+						<p className="text-xs md:text-sm mt-4 opacity-50">
+							Copyright © 2023, ListingPartners. All rights reserved.
+						</p>
+					</section>
 				</footer>
 			</div>
 			{showContactModal && (

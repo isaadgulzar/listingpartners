@@ -39,10 +39,6 @@
     @apply btn bg-transparent hover:bg-ternary border-ternary hover:border-transparent
   }
   
-  .btn-primary:hover{
-    @apply bg-ternary border-transparent
-  }  
-  
   .input-group {
     @apply relative
   }
