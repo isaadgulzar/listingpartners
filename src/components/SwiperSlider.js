@@ -1,17 +1,12 @@
-import { Navigation, Autoplay } from 'swiper/modules'
-import { Swiper } from 'swiper/react'
-
-import 'swiper/css'
-import 'swiper/css/navigation'
-
-import '../app/slider-styles.css'
+import { Navigation, Autoplay } from "swiper/modules"
+import { Swiper } from "swiper/react"
 
 const SwiperSlider = ({ slidesPerView, spaceBetween, autoPlay, children }) => {
 	return (
 		<Swiper
+			className="mySwiper"
 			speed={700}
 			modules={[Navigation, Autoplay]}
-			spaceBetween={spaceBetween}
 			slidesPerView={1}
 			navigation={true}
 			autoplay={
@@ -26,9 +21,9 @@ const SwiperSlider = ({ slidesPerView, spaceBetween, autoPlay, children }) => {
 			breakpoints={{
 				768: {
 					slidesPerView: slidesPerView,
+					spaceBetween: spaceBetween,
 				},
 			}}
-			className="mySwiper"
 		>
 			{children}
 		</Swiper>

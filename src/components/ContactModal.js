@@ -1,8 +1,7 @@
-import { useState, useEffect, useRef } from 'react'
-import Image from 'next/image'
-import ArrowRight from '../../public/assets/icons/ArrowRight.svg'
-import CalendlyEmbed from './CalendlyEmbed'
-import '../app/globals.css'
+import { useState, useEffect, useRef } from "react"
+import Image from "next/image"
+import ArrowRight from "../../public/assets/icons/ArrowRight.svg"
+import CalendlyEmbed from "./CalendlyEmbed"
 
 const ContactModal = ({ handleClose }) => {
 	const [showSuccessModal, setShowSuccessModal] = useState(false)
@@ -13,15 +12,15 @@ const ContactModal = ({ handleClose }) => {
 	}, [])
 
 	const [formData, setFormData] = useState({
-		streetAddress: '',
-		city: '',
-		stateProvince: '',
-		postalCode: '',
-		firstName: '',
-		lastName: '',
-		phoneNumber: '',
-		email: '',
-		additionalInfo: '',
+		streetAddress: "",
+		city: "",
+		stateProvince: "",
+		postalCode: "",
+		firstName: "",
+		lastName: "",
+		phoneNumber: "",
+		email: "",
+		additionalInfo: "",
 		marketingConsent: false,
 		dataProcessingConsent: false,
 	})
@@ -30,13 +29,13 @@ const ContactModal = ({ handleClose }) => {
 		const { name, value, type, checked } = e.target
 		setFormData({
 			...formData,
-			[name]: type === 'checkbox' ? checked : value,
+			[name]: type === "checkbox" ? checked : value,
 		})
 	}
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		console.log('Form submitted with data:', formData)
+		console.log("Form submitted with data:", formData)
 		setFormData({
 			streetAddress: formData.streetAddress,
 			city: formData.city,
@@ -55,13 +54,16 @@ const ContactModal = ({ handleClose }) => {
 
 	return (
 		<div className="fixed z-50 inset-0 overflow-y-auto">
-			<div className="min-h-screen pt-4 px-5 md:px-10 lg:px-0 pb-20">
+			<div className="min-h-screen pt-4 px-2.5 md:px-10 lg:px-0 pb-20">
 				<div onClick={handleClose} className="fixed inset-0 transition-opacity">
 					<div className="absolute inset-0 z-0 bg-secondary bg-opacity-90"></div>
 				</div>
-				<h1 className="main-heading text-center relative z-10 py-16 max-w-max mx-auto">
-					Sell smarter<span className="full-stop">.</span> Everyday
-					<span className="full-stop">.</span>
+				<h1
+					onClick={handleClose}
+					className="section-heading text-center relative z-10 py-10 md:py-16 max-w-max mx-auto"
+				>
+					Sell smarter<span className="text-ternary">.</span> Everyday
+					<span className="text-ternary">.</span>
 				</h1>
 				<form
 					className="bg-primary w-full max-w-5xl mx-auto py-5 lg:py-10 px-5 lg:px-14 relative z-10 rounded-2xl"
@@ -69,8 +71,10 @@ const ContactModal = ({ handleClose }) => {
 				>
 					<div className="flex flex-col gap-10">
 						<div className="flex flex-col gap-5">
-							<h1 className="section-heading">Seller details form</h1>
-							<p className="section-desc text-left">
+							<h1 className="section-heading !text-[26px] !lg:text-[42px] !leading-[normal]">
+								Seller details form
+							</h1>
+							<p className="section-desc !text-sm lg:text-base text-left">
 								Sell your home with confidence – choose ListingPartners, your
 								go-to platform for connecting with the perfect.
 							</p>
@@ -78,7 +82,7 @@ const ContactModal = ({ handleClose }) => {
 
 						<div className="flex flex-col gap-5">
 							<h2 className="block-heading">Property address</h2>
-							<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+							<div className="grid grid-cols-1 md:grid-cols-2 gap-7 lg:gap-4">
 								<div className="input-group">
 									<label className="input-label">Street Address</label>
 									<input
@@ -125,7 +129,7 @@ const ContactModal = ({ handleClose }) => {
 
 						<div className="flex flex-col gap-5">
 							<h2 className="block-heading">Contact information</h2>
-							<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+							<div className="grid grid-cols-1 md:grid-cols-2 gap-7 lg:gap-4">
 								<div className="input-group">
 									<label className="input-label">First Name</label>
 									<input
@@ -198,7 +202,7 @@ const ContactModal = ({ handleClose }) => {
 									checked={formData.marketingConsent}
 									onChange={handleChange}
 								/>
-								<span className="font-montserrat text-negative text-xs lg:text-base lg:flex-shrink-0">
+								<span className="font-montserrat text-negative text-sm lg:text-base !leading-[normal] !tracking-[0.21px] lg:flex-shrink-0">
 									I consent to receiving marketing content...
 								</span>
 							</label>
@@ -210,8 +214,8 @@ const ContactModal = ({ handleClose }) => {
 									checked={formData.dataProcessingConsent}
 									onChange={handleChange}
 								/>
-								<span className="font-montserrat text-negative text-xs lg:text-base lg:flex-shrink-0">
-									I consent to the processing of data and the...
+								<span className="font-montserrat text-negative text-sm lg:text-base !leading-[normal] !tracking-[0.21px] lg:flex-shrink-0">
+									I consent to the processing of data and the...{" "}
 									<a href="#" className="underline">
 										Terms of Service
 									</a>
@@ -219,9 +223,15 @@ const ContactModal = ({ handleClose }) => {
 							</label>
 						</div>
 
-						<button type="submit" className="btn-solid bg-ternary max-w-max">
-							Submit{' '}
-							<Image src={ArrowRight} alt="ArrowRight" className="h-3 w-3.5" />
+						<button type="submit" className="btn-solid bg-ternary md:max-w-max">
+							Submit{" "}
+							<Image
+								src={ArrowRight}
+								alt="ArrowRight"
+								className="h-3.5 w-3.5 flex-shrink-0"
+								width={"auto"}
+								height={"auto"}
+							/>
 						</button>
 					</div>
 				</form>
@@ -239,7 +249,7 @@ const SuccessModal = ({ onClose }) => {
 			<div class="fixed inset-0 bg-secondary/90 transition-opacity"></div>
 
 			<div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-				<div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+				<div class="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0">
 					<div class="relative transform overflow-hidden rounded-lg bg-primary px-4 pb-4 pt-5 text-left transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
 						<div>
 							<div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-secondary">
@@ -276,7 +286,7 @@ const SuccessModal = ({ onClose }) => {
 							<button
 								onClick={onClose}
 								type="button"
-								class="inline-flex w-full justify-center rounded-md bg-ternary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-ternary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ternary/90"
+								class="inline-flex w-full justify-center rounded-full bg-ternary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-ternary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ternary/90"
 							>
 								Close
 							</button>
