@@ -1,7 +1,7 @@
-'use client'
-import Image from 'next/image'
-import React, { useState } from 'react'
-import Star from '../assets/icons/Star.svg'
+"use client"
+import Image from "next/image"
+import React, { useState } from "react"
+import Star from "../../public/assets/icons/Star.svg"
 
 const Card = ({ review }) => {
 	const [showModal, setShowModal] = useState(false)
@@ -17,7 +17,8 @@ const Card = ({ review }) => {
 					src={review?.image}
 					alt="Image"
 					className="w-full h-full object-cover"
-					priority
+					width={"auto"}
+					height={"auto"}
 				/>
 			</div>
 
@@ -33,7 +34,8 @@ const Card = ({ review }) => {
 									src={Star}
 									alt="Image"
 									className="w-4 h-4"
-									priority
+									width={"auto"}
+									height={"auto"}
 								/>
 							))}
 						</span>
@@ -50,7 +52,7 @@ const Card = ({ review }) => {
 						"We couldn't have been more delighted with the Listing Partners! Their method of handpicking premier agents and creating unique terms and conditions resulted in a flawlessly smooth selling experience."
 					}
 				</p>
-				<p className="h-16 w-full bg-secondary lg:bg-primary absolute z-10 left-0 bottom-0"></p>
+				<p className="h-16 w-full bg-primary absolute z-10 left-0 bottom-0"></p>
 			</div>
 		</div>
 	)
